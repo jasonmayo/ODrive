@@ -492,8 +492,6 @@ group.add_argument("--outputs", type=str,
                     help="path pattern for the generated outputs. One output is generated for each interface. Use # as placeholder for the interface name.")
 parser.add_argument("--generate-endpoints", type=str, nargs='?',
                     help="if specified, an endpoint table will be generated and passed to the template for the specified interface")
-parser.add_argument("--one-file-per-type", type=bool, nargs='?',
-                    help="if specified, an endpoint table will be generated and passed to the template for the specified interface")
 args = parser.parse_args()
 
 if args.version:
