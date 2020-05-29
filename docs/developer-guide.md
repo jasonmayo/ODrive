@@ -248,7 +248,8 @@ gem install bundler # The gem command typically comes with a Ruby installation
 rm Gemfile.lock # only if below commands cause trouble
 bundle config path ruby-bundle
 bundle install
-mkdir -p _api _includes &&  python ../Firmware/interface_generator.py --definitions ../Firmware/odrive-interface.yaml --template _layouts/api_documentation_template.j2 --outputs _api/'#'.md && python ../Firmware/interface_generator.py --definitions ../Firmware/odrive-interface.yaml --template _layouts/api_index_template.j2 --output _includes/apiindex.html
+mkdir -p _api _includes
+python ../Firmware/interface_generator.py --definitions ../Firmware/odrive-interface.yaml --template _layouts/api_documentation_template.j2 --outputs _api/'#'.md && python ../Firmware/interface_generator.py --definitions ../Firmware/odrive-interface.yaml --template _layouts/api_index_template.j2 --output _includes/apiindex.html
 bundle exec jekyll serve --incremental --host=0.0.0.0
 ```
 
