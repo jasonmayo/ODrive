@@ -321,18 +321,20 @@ header li {
     font-weight: bold;
 }
 
-.navitem, .navitem {
+.navitem {
   //border:1px solid #e0e0e0;
-  line-height:1;
   font-size:12px;
   font-weight: bold;
   color:#676767;
   display:block;
   text-align:left;
-  padding:12px 0px 5px 5px;
+  padding:0px 5px;
   margin:0px;
-  height:20px;
+  height:37px;
+  line-height:37px;
 }
+
+.navitem a { display: block; }
 
 .currentitem {
   //-webkit-box-shadow: inset 0px 0px 5px 3px #aa0000a6;
