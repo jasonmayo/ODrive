@@ -40,9 +40,16 @@ download:
 [%- endif %]
 [%- endmacro %]
 
+[%- macro breadcrumbs(title) %]
+# [% for item in title.split('.') | diagonalize -%]
+<a href="[[item | join('.') | lower]]">[[item[-1]]]</a>
+[%- if not loop.last %]<span style="font-size: x-large;opacity: 50%;">&ensp;&#x3009;</span>[% endif %]
+[%- endfor %]
+[%- endmacro %]
+
 [% if interface %]
 
-# [[interface.fullname]]
+[[breadcrumbs(interface.fullname)]]
 
 [%- if interface.doc or interface.brief %]
 [[doc_tokenize(interface.brief)]][% if interface.brief and interface.doc %]
@@ -113,7 +120,7 @@ This interface has no functions.
 
 [% else %]
 
-# [[enum.fullname]]
+[[breadcrumbs(enum.fullname)]]
 
 [%- if enum.doc or enum.brief %]
 [[doc_tokenize(enum.brief)]][% if enum.brief and enum.doc %]

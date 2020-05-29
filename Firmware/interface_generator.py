@@ -640,6 +640,7 @@ env.filters['first'] = lambda x: next(iter(x))
 env.filters['skip_first'] = lambda x: list(x)[1:]
 env.filters['to_c_string'] = lambda x: '\n'.join(('"' + line.replace('"', '\\"') + '"') for line in json.dumps(x, separators=(',', ':')).replace('{"name"', '\n{"name"').split('\n'))
 env.filters['tokenize'] = tokenize
+env.filters['diagonalize'] = lambda lst: [lst[:i + 1] for i in range(len(lst))]
 
 template = env.from_string(template_file.read())
 
