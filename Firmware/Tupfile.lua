@@ -6,10 +6,20 @@ tup.include('build.lua')
 -- command "python --version" does not open the Microsoft Store.
 -- On some systems this may return a python2 command if Python3 is not installed.
 function find_python3()
-    success, python_version = run_now("python3 --version")
-    if success then return "python3" end
-    success, python_version = run_now("python --version")
-    if success then return "python" end
+    success, home = run_now("echo $HOME")
+    if string.match(home, '\\') then
+        which = 'where' -- Windows
+    else
+        which = 'which' -- Unix
+    end
+    if run_now(which.." python3") then
+        success, python_version = run_now("python3 --version")
+        if success and string.match(python_version, "Python 3") then return "python3" end
+    end
+    if run_now(which.." python") then
+        success, python_version = run_now("python --version")
+        if success and string.match(python_version, "Python 3") then return "python" end
+    end
     error("Python 3 not found.")
 end
 
